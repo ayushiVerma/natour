@@ -1,0 +1,259 @@
+Cascade : combining different stylesheets and resolvilng the conflict,
+Auther - Written by developers
+User - Manifulated by users - inspect element
+Browser (User Agent) - Default provided by Browser
+
+-----------------------------
+CSS UNITS
+Pixel: represents a pixl on a device
+Points: 72 Points equals 1 inch
+Ems: 1 em = current font size.: relative unit: my parent element's font-size: font size set to 1.3em — 1.3 times its parent's font size.
+Rem: Relative to font-size of the root element
+Percent: 100% : relative unit
+
+------------------------------
+CSS POSITIONS
+- Static : Default by the Browser. Static element will not be affected by top, bottom,left and right.
+    Theses are alawys positioned according to the Normal flow of page.
+
+- Relative: An element with position: relative; is positioned relative to its normal position.
+    Setting the top, right, bottom, and left properties of a relatively-positioned element will
+    cause it to be adjusted away from its normal position. Other content will not be adjusted to fit 
+    into any gap left by the element.
+
+- Fixed: An element with position: fixed; is positioned relative to the viewport, 
+    which means it always stays in the same place even if the page is scrolled. 
+    The top, right, bottom, and left properties are used to position the element.
+
+- Absolute: An element with position: absolute; is positioned relative to the nearest positioned 
+        ancestor (instead of positioned relative to the viewport, like fixed).
+    However; if an absolute positioned element has no positioned ancestors, 
+    it uses the document body, and moves along with page scrolling.
+
+    Note: A "positioned" element is one whose position is anything except static.
+
+- Sticky: An element with position: sticky; is positioned based on the user's scroll position.
+    A sticky element toggles between relative and fixed, depending on the scroll position. 
+    It is positioned relative until a given offset position is met in the viewport - then it "sticks" 
+	in place (like position:fixed).
+
+------------------------------
+The overflow property specifies whether to clip the content or to add scrollbars when the content 
+of an element is too big to fit in the specified area.
+
+The overflow property has the following values:
+
+visible - Default. The overflow is not clipped. The content renders outside the element's box
+hidden - The overflow is clipped, and the rest of the content will be invisible
+scroll - The overflow is clipped, and a scrollbar is added to see the rest of the content
+auto - Similar to scroll, but it adds scrollbars only when necessary
+
+
+------------------------------
+Selector	Example	Example description
+element element	div p	Selects all <p> elements inside <div> elements
+element>element	div > p	Selects all <p> elements where the parent is a <div> element
+element+element	div + p	Selects the first <p> element that are placed immediately after <div> elements
+element1~element2	p ~ ul	Selects every <ul> element that are preceded by a <p> element
+
+-------------------------------
+
+
+Importance > Specificity > Source Order
+
+
+Importance
+Priority is defined by:
+1.User !important declaration
+2.Author !important declaration
+3. Author declaration
+4. User declaration
+5 Default Browser declaration.
+
+Specificity: Represented as (0,0,0,0)
+1. Inline stylesheets
+2. IDs
+3 Classes, pseudo classes, attributes
+4 element, pseudo element
+
+
+Universal selector has Specificity value (0,0,0,0)
+
+------------------------------
+Block Types: Inline, block level, inline-block.
+
+Block Level:                                        Inline-block Level
+-100% of parent's width                           - Occupies only one content's block  
+-Veryically one after another.                    - No Line breaks - No Height & width
+display: block                                    - Padding & margins only horizontal (left & right)
+display: flex                                      display: inline-block
+display: list-item                                 - A mix of block and inline
+display: table
+
+Inline Level
+- content is distributed in Line
+- Occupies only content space
+- no Height & width;
+- Padding & margins only horizontal (left & right)
+
+-------------------------------------
+Positioning
+
+Normal Flow: 
+-Default Positioning scheme, 
+-No Floats, 
+-Not absolutely positioned
+position: relative
+
+Floats
+- element is removed from the Normal Flow
+- Text and inline element will be wrapped around floated element.
+- The container will not adjust its Height to the element.
+
+absolutely Positioning:
+- element is removed from the Normal Flow.
+- No impact on surrounding content or elements.
+- Use top, bottom,left, right to offset the element from its relatively positioned container
+position: fixed, position: absolute
+
+------------------
+Stacking Context : Layers of view : z-index
+
+z-index: 1 position:relative
+z-index: 2 position:absolute
+z-index: 3 position:relative
+
+BEM: Block Element Modifier.
+Block: standalone component that is meaningful on its own.
+Element: Part of block that has no standalone meaning.
+Modifier: a different version of block or an element
+
+The 7-1 Patten:
+1. base/
+2.component/
+3. layout/
+4. pages/
+5. themes/
+6. abstract/
+7 vendors/
+
+-------------------------
+Sass: Css Pre-processor
+It provides:
+- Variables.
+- Nesting
+-Operators
+-Partials and imports
+- Mixins
+-Functions
+-Extends
+-Control directives
+
+----------------------------------
+CSS Selectors:
+1. Universal selectors: *
+2. ID.
+3. class.
+4. Element Type Selector: 
+5. Descendant Combinators: the descendant combinator lets you combine two or more 
+	selectors so you can be more specific in your selection method.
+
+	#container .box {
+	float: left;
+	padding-bottom: 15px;
+} 
+
+<div id="container">
+	<div class="box"></div>
+	
+	<div class="box-2"></div>
+</div>
+
+
+6. Child Combinator: A selector that uses the child combinator is similar to a selector that uses a 
+		descendant combinator, except it only targets immediate child elements.
+
+#container> .box {
+	float: left;
+	padding-bottom: 15px;
+}
+
+<div id="container">
+	<div class="box"></div>
+	
+	<div>
+		<div class="box"></div>
+	</div>
+</div>
+
+
+7. General Sibling Combinator: A selector that uses a general sibling combinator to match elements 
+based on sibling relationships. The selected elements are beside each other in the HTML.
+
+h2 ~ p {
+	margin-bottom: 20px;
+}
+
+<h2>Title</h2>
+<p>Paragraph example.</p>
+<p>Paragraph example.</p>
+<p>Paragraph example.</p>
+<div class=”box”>
+	<p>Paragraph example.</p>
+</div> ;;;;;;; Here all p's will get styled.
+
+8. Adjacent Sibling Combinator(+):A selector that uses the adjacent sibling combinator uses the plus symbol (+), and is almost the same as the general sibling selector. The difference is that the targeted element must be an immediate sibling, not just a general sibling.
+
+p + p {
+	text-indent: 1.Sem;
+	margin-bottom: 0;
+}
+
+<h2>Title</h2>
+<p>Paragraph example.</p>
+<p>Paragraph example.</p>
+<p>Paragraph example.</p>
+
+9. Attribute Selector: The attribute selector targets elements based on the presence and/or value of HTML attributes, and is declared using square brackets.
+
+input [type=”text”] {
+	background-color: #444;
+	width: 200px;
+}
+
+<input type="text"> 
+----------------------------------------------------------
+
+Pseudo-classes select regular elements but under certain conditions like when the user is hovering over the link.
+
+:link
+:visited
+:hover
+:active
+:focus
+
+
+A pseudo-element however allows us to create items that do not normally exist in the document tree, for example ::after.
+
+::before
+::after
+::first-letter
+::first-line
+::selection
+
+-----------------------------------------------------------------
+Different Box Sizing Property?
+The box-sizing CSS property sets how the total width and height of an element are calculated.
+
+Content-box: The default width and height values apply to the element's content only. 
+			The padding and border are added to the outside of the box.
+
+Padding-box: Width and height values apply to the element's content and its padding. 
+			The border is added to the outside of the box. Currently, only Firefox supports the 
+			padding-box value.
+
+Border-box: Width and height values apply to the content, padding, and border.
+
+
+
+
