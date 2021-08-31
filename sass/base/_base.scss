@@ -1,0 +1,15 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+/* box-sizing: border-box : so that o extra margin and paadiing is added */
+
+html {
+    /* font-size: 10px; So that we can manage the default root font size setting to default 16px i.e 10/16 Percent */
+    font-size: 62.5%;
+}
